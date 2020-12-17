@@ -1,3 +1,10 @@
+.video-wrapper {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  width: auto;
+}
+
 .video {
   max-height: 75vh;
   max-width: 75vw;
@@ -11,6 +18,8 @@
   bottom: 5px;
   align-items: center;
   margin: 0px;
+  width: 100%;
+  place-content: center;
 }
 
 .controls {
