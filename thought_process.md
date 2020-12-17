@@ -50,7 +50,7 @@ Asked Issy for clarification for whether the images should disappear at a certai
 Main tasks pretty much complete.
 The images appear and disappear at the right time, and reappear if you navigate back to inside their timeslot (if they're still within their count limit). Same as if you navigate ahead of their opening timeslot, they'll appear (if they're still within their count limit).
 
-# Adjustments and expanded tasks
+## Adjustments and expanded tasks
 
 Adjust the video and images to make them responsive. They work fine on smaller devices now.
 Separate out the css files to make removing them easier at a later stage if you wanted to. Now sitting with their respective .jsx files
