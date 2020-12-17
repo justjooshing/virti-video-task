@@ -1,0 +1,17 @@
+.image {
+  position: absolute;
+  height: 20%;
+  max-height: 8em;
+}
+
+#image1 {
+  left: 0.3em;
+}
+
+#image2 {
+  right: 0.3em;
+}
+
+#image3 {
+  align-self: center;
+}

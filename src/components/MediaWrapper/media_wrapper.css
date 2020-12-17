@@ -1,0 +1,6 @@
+.media-wrapper {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  z-index: 1;
+}
