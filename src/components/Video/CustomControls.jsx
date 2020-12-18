@@ -8,6 +8,8 @@ import ProgressBar from "./Controls/ProgressBar"
 
 export default function CustomControls({videoRef, checkTime}) {
 
+  // I want to move this useState into ProgressBar, 
+  // but not sure how to then handle updateProgressBar in useEffect
   const [progressBar, updateProgressBar] = useState(0);
 
   useEffect(() => {
