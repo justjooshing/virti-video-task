@@ -66,4 +66,6 @@ Styling the progress bar was also difficult, I had to google this too because it
 But now the unecessary controls have been removed, and the remaining ones changed. The video did seem a bit laggy when navigating via the progress bar, but it looks to be the same with the standard controls, so it might be my computer or a CRA/video size issue.
 
 Overall it was a fun project where I learnt a ton, if I had more time I would want to have a hover over the progress bar to show the timestamp for easier navigation, which is something that I think is noticeably missing from my controls.
-I also would put a "do not press" button in that runs away from you, but when you click it it takes you [here](https://www.youtube.com/watch?v=DLzxrzFCyOs). But it's more of a nice to have, and I want to submit by tonight.
+I also would put a "do not press" button in that runs away from you, but when you click it it takes you [here](https://www.youtube.com/watch?v=DLzxrzFCyOs).
+
+Overnight I thought about my structuring, and had another look this morning to see what I could neaten up. In my CustomControls I wanted to separate out my seek function, but since I was using UpdateProgressBar in useEffect I wasn't sure whether I should run another useEffect or just pass in UpdateProgressBar and ProgressBar
