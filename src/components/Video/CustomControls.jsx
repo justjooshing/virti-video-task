@@ -1,15 +1,16 @@
 import React, {useEffect, useState} from 'react'
 
-import playPause from "../../helperFunctions/playPause";
+import PlayPauseButton from "./Controls/PlayPauseButton";
+import FullscreenButton from "./Controls/FullscreenButton";
+import ProgressBar from "./Controls/ProgressBar"
 
-const playPauseImage = "./images/playPauseImage.png";
-const fullscreenImage = "./images/fullscreenImage.png";
+
 
 export default function CustomControls({videoRef, checkTime}) {
 
-  const [currentlyPlaying, setPlayOrPause] = useState(true);
   const [progressBar, updateProgressBar] = useState(0);
 
+  
   const seek = (e) => {
     const rect = e.target.getBoundingClientRect();
     const x = e.clientX - rect.left;
@@ -38,37 +39,18 @@ export default function CustomControls({videoRef, checkTime}) {
 
   return (
     <div className="controls-wrapper">
-        <button
-          className="controls"
-          id="playpause"
-          type="button"
-          onClick={() => playPause(videoRef, currentlyPlaying, setPlayOrPause)}
-        >
-          <img
-            className="controlImages"
-            src={process.env.PUBLIC_URL + playPauseImage}
-            alt="Play/Pause button"
-          />
-        </button>
-        <progress
-          className="controls"
-          id="progress"
-          value={progressBar.toString()}
-          min="0"
-          onClick={seek}
-        />
-        <button
-          className="controls"
-          id="fs"
-          type="button"
-          onClick={() => videoRef.current.requestFullscreen()}
-        >
-          <img
-            className="controlImages"
-            src={process.env.PUBLIC_URL + fullscreenImage}
-            alt="Fullscreen button"
-          />
-        </button>
+      <PlayPauseButton
+        videoRef={videoRef}
+      />
+      <ProgressBar 
+        videoRef={videoRef}
+        checkTime={checkTime}
+        seek={seek}
+        progressBar={progressBar}
+      />
+      <FullscreenButton 
+        videoRef={videoRef}
+      />
       </div>
   )
 }

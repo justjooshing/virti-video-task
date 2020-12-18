@@ -4,6 +4,7 @@ import MediaWrapper from "./components/MediaWrapper/MediaWrapper";
 import "./App.css";
 
 function App() {
+  // I feel like this useState repetition can be reduced but not sure how
   const [image1Count, setImage1Count] = useState(0);
   const [showImage1, toggleShowImage1] = useState(false);
 
@@ -15,8 +16,7 @@ function App() {
 
   const videoRef = useRef();
 
-//start, finish, count, toggle function
-  const checkEachImage = (currentTime, showImage, toggleShowImage, startTime, finishTime, count, maxCount, setCount) => {
+const checkEachImage = (currentTime, showImage, toggleShowImage, startTime, finishTime, count, maxCount, setCount) => {
     if (
       currentTime >= startTime &&
       currentTime <= finishTime &&
