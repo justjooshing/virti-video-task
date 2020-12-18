@@ -4,7 +4,7 @@ import CustomControls from "./CustomControls"
 
 const videoFile = "./Big_Buck_Bunny_1080_10s_5MB.mp4";
 
-export default function Video({ videoRef, checkCount }) {
+export default function Video({ videoRef, checkTime }) {
  
 
   return (
@@ -15,7 +15,7 @@ export default function Video({ videoRef, checkCount }) {
 
       <CustomControls
         videoRef={videoRef}
-        checkCount={checkCount}
+        checkTime={checkTime}
       />
     </div>
   );

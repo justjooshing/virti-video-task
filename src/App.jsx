@@ -15,51 +15,31 @@ function App() {
 
   const videoRef = useRef();
 
-  const checkCount = (currentTime) => {
-    // Add or remove image 1
+//start, finish, count, toggle function
+  const checkEachImage = (currentTime, showImage, toggleShowImage, startTime, finishTime, count, maxCount, setCount) => {
     if (
-      currentTime >= 3.5 &&
-      currentTime <= 8.5 &&
-      !showImage1 &&
-      image1Count < 1
-    ) {
-      setImage1Count(image1Count + 1);
-      toggleShowImage1(true);
-    } else if ((currentTime <= 3.5 || currentTime >= 8.5) && showImage1) {
-      toggleShowImage1(false);
-    }
+      currentTime >= startTime &&
+      currentTime <= finishTime &&
+      !showImage &&
+      count < maxCount
+      ) {
+        setCount(count + 1)
+        toggleShowImage(true)
+      } else if ((currentTime <= startTime || currentTime >= finishTime) && showImage) {
+        toggleShowImage(false)
+      }
+  }
 
-    // Add or remove image 2
-    if (
-      currentTime >= 6 &&
-      currentTime <= 8 &&
-      !showImage2 &&
-      image2Count < 2
-    ) {
-      setImage2Count(image2Count + 1);
-      toggleShowImage2(true);
-    } else if ((currentTime <= 6 || currentTime >= 8) && showImage2) {
-      toggleShowImage2(false);
-    }
-
-    // Add or remove image 3
-    if (
-      currentTime >= 7 &&
-      currentTime <= 8.5 &&
-      !showImage3 &&
-      image3Count < 3
-    ) {
-      setImage3Count(image3Count + 1);
-      toggleShowImage3(true);
-    } else if ((currentTime <= 7 || currentTime >= 8.5) && showImage3) {
-      toggleShowImage3(false);
-    }
+  const checkTime = (currentTime) => {
+    checkEachImage(currentTime, showImage1, toggleShowImage1, 3.5, 8.5, image1Count, 1, setImage1Count)
+    checkEachImage(currentTime, showImage2, toggleShowImage2, 6, 8, image2Count, 2, setImage2Count)
+    checkEachImage(currentTime, showImage3, toggleShowImage3, 7, 8.5, image3Count, 3, setImage3Count)
   };
 
   return (
     <div className="App">
       <MediaWrapper
-        checkCount={checkCount}
+        checkTime={checkTime}
         videoRef={videoRef}
         showImage1={showImage1}
         showImage2={showImage2}

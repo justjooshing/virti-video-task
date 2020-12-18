@@ -11,38 +11,3 @@
   border-radius: 10px;
   outline: none;
 }
-
-.controls-wrapper {
-  display: flex;
-  position: absolute;
-  bottom: 5px;
-  align-items: center;
-  margin: 0px;
-  width: 100%;
-  place-content: center;
-}
-
-.controls {
-  margin: 5px;
-  outline: none;
-  border: none;
-  border-radius: 10px;
-  line-height: 0;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
-}
-
-.controlImages {
-  padding: 5px;
-  max-width: 2em;
-}
-
-progress::-webkit-progress-value {
-  background: black;
-  border-radius: 10px;
-}
-
-progress::-webkit-progress-bar {
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
-}

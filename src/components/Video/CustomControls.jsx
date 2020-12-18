@@ -5,7 +5,7 @@ import playPause from "../../helperFunctions/playPause";
 const playPauseImage = "./images/playPauseImage.png";
 const fullscreenImage = "./images/fullscreenImage.png";
 
-export default function CustomControls({videoRef, checkCount}) {
+export default function CustomControls({videoRef, checkTime}) {
 
   const [currentlyPlaying, setPlayOrPause] = useState(true);
   const [progressBar, updateProgressBar] = useState(0);
@@ -18,12 +18,12 @@ export default function CustomControls({videoRef, checkCount}) {
     const percentageAdjustment = (x + 0.5) * videoRef.current.duration / barLength;
     updateProgressBar(percentageAdjustment);
     videoRef.current.currentTime = percentageAdjustment;
-    checkCount(videoRef.current.currentTime);
+    checkTime(videoRef.current.currentTime);
   };
 
   useEffect(() => {
     const interval = setInterval(() => {
-      checkCount(videoRef.current.currentTime);
+      checkTime(videoRef.current.currentTime);
       if (videoRef.current.currentTime / videoRef.current.duration === 100) {
         videoRef.current.currentTime = 0;
       }
