@@ -1,7 +1,20 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
 
-export default function ProgressBar({videoRef, checkTime, progressBar, updateProgressBar}) {
-  
+export default function ProgressBar({ videoRef, checkTime }) {
+  const [progressBar, updateProgressBar] = useState(0);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      checkTime(videoRef.current.currentTime);
+
+      updateProgressBar(
+        videoRef.current.currentTime / videoRef.current.duration
+      );
+    }, 10);
+    return () => {
+      clearInterval(interval);
+    };
+  });
+
   const seek = (e) => {
     const rect = e.target.getBoundingClientRect();
     const x = e.clientX - rect.left;
@@ -12,7 +25,7 @@ export default function ProgressBar({videoRef, checkTime, progressBar, updatePro
     updateProgressBar(percentageAdjustment);
     videoRef.current.currentTime = percentageAdjustment;
     checkTime(videoRef.current.currentTime);
-  };  
+  };
 
   return (
     <progress
@@ -22,5 +35,5 @@ export default function ProgressBar({videoRef, checkTime, progressBar, updatePro
       min="0"
       onClick={seek}
     />
-  )
+  );
 }
