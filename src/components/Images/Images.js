@@ -1,51 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 
-import Image from "./Image";
+export default function Image({
+  currentTime,
+  url,
+  alt,
+  startTime,
+  endTime,
+  countLimit,
+  name,
+}) {
+  const [imageCount, setImageCount] = useState(0);
+  const [showImage, toggleShowImage] = useState(false);
 
-export default function Images({ currentTime }) {
-  const images = [
-    {
-      name: "image1",
-      url: "/images/image1.png",
-      startTime: 3.5,
-      endTime: 8.5,
-      countLimit: 1,
-      alt: "Banana Emoji",
-    },
-    {
-      name: "image2",
-      url: "/images/image2.png",
-      startTime: 6,
-      endTime: 8,
-      countLimit: 2,
-      alt: "Xbox Controller Emoji",
-    },
-    {
-      name: "image3",
-      url: "/images/image3.png",
-      startTime: 7.5,
-      endTime: 8.5,
-      countLimit: 3,
-      alt: "Fire Emoji",
-    },
-  ];
+  if (currentTime >= startTime && currentTime <= endTime) {
+    if (!showImage && imageCount < countLimit) {
+      setImageCount(imageCount + 1);
+      toggleShowImage(true);
+    }
+  } else if (showImage) {
+    toggleShowImage(false);
+  }
 
-  return (
-    <>
-      {Object.values(images).map((image, index) => {
-        return (
-          <Image
-            currentTime={currentTime}
-            key={index}
-            url={image.url}
-            alt={image.alt}
-            startTime={image.startTime}
-            endTime={image.endTime}
-            countLimit={image.countLimit}
-            name={image.name}
-          />
-        );
-      })}
-    </>
-  );
+  return showImage ? (
+    <img
+      className="image"
+      id={name}
+      src={process.env.PUBLIC_URL + url}
+      alt={alt}
+    />
+  ) : null;
 }
