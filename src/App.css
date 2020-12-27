@@ -1,7 +1,7 @@
 @import "./components/MediaWrapper/media_wrapper.css";
 @import "./components/Images/images.css";
 @import "./components/Video/video.css";
-@import "./components//Video/custom-controls.css";
+@import "./components/Video/custom-controls.css";
 
 .App {
   height: 100vh;
