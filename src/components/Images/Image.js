@@ -11,20 +11,16 @@ export default function Image({
 }) {
   const [imageCount, setImageCount] = useState(0);
   const [showImage, toggleShowImage] = useState(false);
-  if (
-    currentTime >= startTime &&
-    currentTime <= endTime &&
-    !showImage &&
-    imageCount < countLimit
-  ) {
-    setImageCount(imageCount + 1);
-    toggleShowImage(true);
-  } else if (
-    (currentTime <= startTime || currentTime >= endTime) &&
-    showImage
-  ) {
+
+  if (currentTime >= startTime && currentTime <= endTime) {
+    if (!showImage && imageCount < countLimit) {
+      setImageCount(imageCount + 1);
+      toggleShowImage(true);
+    }
+  } else if (showImage) {
     toggleShowImage(false);
   }
+
   return showImage ? (
     <img
       className="image"
